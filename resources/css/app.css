@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.chat_container {
+    position: fixed;
+    width: 95%;
+    left: 2.5%;
+    height: 87%;
+    border: 1px solid gray;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/*chat list*/
+.chat_list_container {
+    border: 1px solid gray;
+    width: 25%;
+    height: 100%;
+
+    .chat_list_header {
+        border: 1px solid gray;
+        height: 4em;
+    }
+
+    .chat_list_body {
+
+    }
+
+}
+
+
+/*chat box*/
+.chat_box_container {
+    position: relative;
+    width: 75%;
+    height: 100%;
+    border: 1px solid gray;
+
+    .chat_box_header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        border: 1px solid gray;
+        height: 4em;
+    }
+
+    .chat_box_body {
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        border: 1px solid blue;
+        overflow-y: auto;
+    }
+
+    .chat_box_footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border: 1px solid green;
+    }
+}

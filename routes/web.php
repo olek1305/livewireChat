@@ -1,6 +1,11 @@
 <?php
 
+use App\Livewire\Chat\CreateChat;
+use App\Livewire\Chat\Main;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/users', CreateChat::class)->name('users.create');
+Route::get('/chat{key?}', Main::class)->name('chat');
 
 Route::view('/', 'welcome');
 
