@@ -100,7 +100,7 @@
                 .message_body {
                     width: 80%;
                     font-weight: lighter;
-                    font-family: Roboto;
+                    font-family: Roboto, monospace;
                 }
 
                 .unread_count {
