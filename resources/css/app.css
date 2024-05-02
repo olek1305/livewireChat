@@ -331,3 +331,17 @@ body {
         }
     }
 }
+
+/*List group*/
+
+
+
+.list-group-container {
+    @apply w-56 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg mt-2;
+
+    @layer components {
+        .list-group-item {
+            @apply px-4 py-2 border-b rounded-t-lg;
+        }
+    }
+}
