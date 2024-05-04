@@ -22,10 +22,8 @@ class ChatList extends Component
 
         $receiverInstance = User::find($receiverId);
 
-        $this->dispatch('loadConversation', ['conversation' => $this->selectedConversation, 'receiverInstance' => $receiverInstance]);
-
+        $this->dispatch('loadConversation', $this->selectedConversation, $receiverInstance);
     }
-
 
     public function getChatUserInstance(Conversation $conversation, $request)
     {
