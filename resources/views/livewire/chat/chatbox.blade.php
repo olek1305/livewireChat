@@ -1,20 +1,20 @@
-<div>
-    @if($selectedConversation)
-        <div class="chat_box_header">
+    <div>
+        @if($selectedConversation)
+            <div class="chat_box_header">
 
-            <div class="return">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                    <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
-                </svg>
-            </div>
+                <div class="return">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                        <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
+                    </svg>
+                </div>
 
-            <div class="img_container">
-                <img src="https://picsum.photos/{{ $receiverInstance->id }}/231/200/300" alt="dog">
-            </div>
+                <div class="img_container">
+                    <img src="https://ui-avatars.com/api/?name={{ $receiverInstance->name }}" alt="">
+                </div>
 
-            <div class="name">
-                {{ $receiverInstance->name }}
-            </div>
+                    <div class="name">
+                        {{ $receiverInstance->name }}
+                    </div>
 
             <div class="info">
                 <div class="info_item">

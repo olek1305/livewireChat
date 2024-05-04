@@ -5,7 +5,7 @@
         </div>
 
         <div class="img_container">
-            <img src="https://picsum.photos/id/237/200/300" alt="dog">
+            <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff&name={{ auth()->user()->name }}" alt="dog">
         </div>
     </div>
 
@@ -15,7 +15,7 @@
             @foreach ($conversations as $conversation)
                 <div class="chat_list_item" wire:click="chatUserSelected({{ $conversation }}, {{ $this->getChatUserInstance($conversation, 'id') }})">
                     <div class="chat_list_img_container">
-                        <img src="https://picsum.photos/id/{{ $this->getChatUserInstance($conversation, $name = 'id') }}/200/300" alt="">
+                        <img src="https://ui-avatars.com/api/?name={{ $this->getChatUserInstance($conversation, $name = 'name') }}" alt="">
                     </div>
 
                     <div class="chat_list_info">
