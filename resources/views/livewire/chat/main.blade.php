@@ -10,4 +10,43 @@
             @livewire('chat.send-message')
         </div>
     </div>
+
+    <script>
+        window.addEventListener('chatSelected', event => {
+            if(window.innerWidth < 768){
+                document.querySelectorAll('.chat_list_container').forEach(element => {
+                    element.style.display = 'none';
+                });
+                document.querySelectorAll('.chat_box_container').forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+        });
+
+        window.addEventListener('resize', function(){
+            if(window.innerWidth > 768){
+                document.querySelectorAll('.chat_list_container').forEach(element => {
+                    element.style.display = 'block';
+                });
+                document.querySelectorAll('.chat_box_container').forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+        });
+
+
+        document.addEventListener('click', function(event) {
+            if (event.target.closest('.return')) {
+                document.querySelectorAll('.chat_list_container').forEach(element => {
+                    element.style.display = 'block';
+                });
+                document.querySelectorAll('.chat_box_container').forEach(element => {
+                    element.style.display = 'none';
+                });
+            }
+        });
+
+
+    </script>
+
 </div>
