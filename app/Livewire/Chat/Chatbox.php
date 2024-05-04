@@ -17,10 +17,10 @@ class Chatbox extends Component
 
     protected $listeners = ['loadConversation'];
 
-    public function loadConversation(Conversation $conversation, User $receiver)
+    public function loadConversation(Conversation $conversation, User $receiverInstance)
     {
         $this->selectedConversation = $conversation;
-        $this->receiverInstance = $receiver;
+        $this->receiverInstance =  $receiverInstance;
 
         $this->messages_count = Message::where('conversation_id', $this->selectedConversation->id)
             ->count();
@@ -30,8 +30,9 @@ class Chatbox extends Component
             ->take($this->paginateVar)
             ->get();
 
-            $this->Dispatch('chatSelected');
+        $this->Dispatch('chatSelected');
     }
+
     public function render()
     {
         return view('livewire.chat.chatbox');
