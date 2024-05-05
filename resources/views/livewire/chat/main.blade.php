@@ -21,6 +21,11 @@
                     element.style.display = 'block';
                 });
             }
+
+            requestAnimationFrame(() => {
+                const chatBoxBody = document.querySelector('.chat_box_body');
+                    chatBoxBody.scrollTop = chatBoxBody.scrollHeight;
+            });
         });
 
         window.addEventListener('resize', function(){

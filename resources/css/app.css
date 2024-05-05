@@ -255,13 +255,12 @@ body {
     }
 
     .chat_box_body {
-        overflow: hidden;
-        overflow-y: auto;
+        overflow-y: scroll;
         position: absolute;
         top: 60px;
         width: 100%;
-        padding: 17px 11px;
-        height: 87%;
+        padding: 17px 11px 40px;
+        height: calc(100% - 90px);
         bottom: var(--footer-height);
 
         .msg_body {

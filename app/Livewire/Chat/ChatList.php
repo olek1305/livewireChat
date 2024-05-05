@@ -5,7 +5,6 @@ namespace App\Livewire\Chat;
 use App\Models\Conversation;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ChatList extends Component
@@ -16,13 +15,17 @@ class ChatList extends Component
     public $name;
     public $selectedConversation;
 
+    protected $listeners = ['chatUserSelected', 'refresh' => '$refresh'];
+
     public function chatUserSelected(Conversation $conversation, $receiverId)
     {
         $this->selectedConversation = $conversation;
 
         $receiverInstance = User::find($receiverId);
 
-        $this->dispatch('loadConversation', $this->selectedConversation, $receiverInstance);
+        $this->dispatch('loadConversation', $this->selectedConversation, $receiverInstance)->to('chat.chatbox');
+
+        $this->dispatch('updateSendMessage', $this->selectedConversation, $receiverInstance)->to('chat.send-message');;
     }
 
     public function getChatUserInstance(Conversation $conversation, $request)

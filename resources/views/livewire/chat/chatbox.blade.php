@@ -37,8 +37,11 @@
 
         <div class="chat_box_body">
 
-                @foreach($messages as $message)
-                <div class="msg_body msg_body_receiver">
+            @foreach($messages as $message)
+                <div wire:key='{{ $message->id }}' class="msg_body
+                    {{ auth()->id() == $message->sender_id? 'msg_body_me': 'msg_body_receiver' }}"
+                     style="width:80%;max-width:max-content"
+                >
 
                     {{ $message->body }}
                     <div class="msg_body_footer">
@@ -54,29 +57,22 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+            @endforeach
 
-            <div class="msg_body msg_body_me">
-                text
-                <div class="msg_body_footer">
-
-                    <div class="date">
-                        5 hours ago
-                    </div>
-
-                    <div class="read">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
         </div>
+
     @else
         <div class="text-center mt-5 text-3xl">
             No  conversation selected
         </div>
-
-
     @endif
+
+    <script>
+        window.addEventListener('rowChatToBottom', event => {
+            requestAnimationFrame(() => {
+                const chatBoxBody = document.querySelector('.chat_box_body');
+                chatBoxBody.scrollTop = chatBoxBody.scrollHeight;
+            });
+        });
+    </script>
 </div>

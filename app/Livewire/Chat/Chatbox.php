@@ -15,9 +15,9 @@ class Chatbox extends Component
     public $messages_count;
     public $paginateVar = 10;
 
-    protected $listeners = ['loadConversation'];
+    protected $listeners = ['loadConversation', 'pushMessage', 'loadmore'];
 
-    public function loadConversation(Conversation $conversation, User $receiverInstance)
+    public function loadConversation(Conversation $conversation, User $receiverInstance): void
     {
         $this->selectedConversation = $conversation;
         $this->receiverInstance =  $receiverInstance;
@@ -30,7 +30,20 @@ class Chatbox extends Component
             ->take($this->paginateVar)
             ->get();
 
-        $this->Dispatch('chatSelected');
+        $this->dispatch('chatSelected');
+    }
+
+    public function pushMessage($messageId): void
+    {
+        $newMessage = Message::find($messageId);
+        $this->messages->push($newMessage);
+
+        $this->dispatch('rowChatToBottom');
+    }
+
+    public function loadmore()
+    {
+        dd('Top Reached');
     }
 
     public function render()
