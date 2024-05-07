@@ -25,6 +25,16 @@
             requestAnimationFrame(() => {
                 const chatBoxBody = document.querySelector('.chat_box_body');
                     chatBoxBody.scrollTop = chatBoxBody.scrollHeight;
+                    let height = chatBoxBody.scrollHeight;
+                    Livewire.dispatch('updateHeight', {
+                        height: height
+                    });
+
+                chatBoxBody.addEventListener('scroll', function() {
+                    if (chatBoxBody.scrollTop === 0) {
+                        Livewire.dispatch('loadmore');
+                    }
+                });
             });
         });
 

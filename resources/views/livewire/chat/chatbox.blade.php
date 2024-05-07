@@ -75,4 +75,28 @@
             });
         });
     </script>
+        <script>
+            window.addEventListener('updatedHeight', event => {
+                requestAnimationFrame(() => {
+                    let oldHeight = event.detail[0].height;
+                    let chatBoxBody = document.querySelector('.chat_box_body');
+                    let newHeight = chatBoxBody.scrollHeight;
+
+                    let heightDifference = newHeight - oldHeight;
+
+                    let scrollReductionPercent = 0.50;
+
+                    let scrollReduction = heightDifference * scrollReductionPercent;
+
+                    let height = newHeight - oldHeight - scrollReduction;
+                    chatBoxBody.scrollTop = height;
+
+                    console.log(oldHeight, newHeight, height)
+
+                    window.Livewire.dispatch('updateHeight', {
+                        height: height
+                    });
+                });
+            });
+        </script>
 </div>
